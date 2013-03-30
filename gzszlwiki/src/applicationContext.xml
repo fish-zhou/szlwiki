@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<aop:aspectj-autoproxy/>
+	<context:component-scan base-package="com"/>
+	
+	<bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator"/>
+	
+	<!-- <aop:config>
+		<aop:aspect id="logaop" ref="logAdvice">
+			<aop:pointcut id="logpointcut" expression="execution(*com.action.EditTextAction.*(..))"/>
+			<aop:around method="processAuthoriry" pointcut-ref="logpointcut"/>
+		</aop:aspect>
+	</aop:config> -->
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>					
+		<property name="url" value="jdbc:mysql://localhost:3306/wiki"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+
+		<!-- <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>					
+		<property name="url" value="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_gzszlwiki"></property>
+		<property name="username" value="y23n3mw3o0"></property>
+		<property name="password" value="20wx52y24zhhwj3xzm4y4ikzmx0hklx0kh1i0i35"></property>
+		<property name="initialSize" value="5"/>  		
+		<property name="maxIdle" value="10"/> 
+		<property name="timeBetweenEvictionRunsMillis" value="15000" />		
+		<property name="minIdle" value="5"/>  
+		<property name="maxActive" value="100"/>
+		<property name="numTestsPerEvictionRun"  value="20" />	
+		<property name="validationQuery"    value="SELECT 1 FROM DUAL" />  
+		<property name="removeAbandoned" value="true"/>  
+		<property name="maxWait" value="1000"></property>
+		<property name="testWhileIdle" value="true" />
+		<property name="removeAbandonedTimeout" value="180"/>
+	</bean> 
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>					
+		<property name="url" value="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_szlwiki"></property>
+		<property name="username" value="45ln5mlmn5"></property>
+		<property name="password" value="ljz0hy5z21jhixy2klj5mlwhx5milw2j1hm0mhj0"></property>
+		<property name="initialSize" value="5"/>  		
+		<property name="maxIdle" value="10"/> 
+		<property name="timeBetweenEvictionRunsMillis" value="15000" />		
+		<property name="minIdle" value="5"/>  
+		<property name="maxActive" value="100"/>
+		<property name="numTestsPerEvictionRun"  value="20" />	
+		<property name="validationQuery"    value="SELECT 1 FROM DUAL" />  
+		<property name="removeAbandoned" value="true"/>  
+		<property name="maxWait" value="1000"></property>
+		<property name="testWhileIdle" value="true" />
+		<property name="removeAbandonedTimeout" value="180"/>
+	</bean>-->
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/entity/User.hbm.xml</value>
+				<value>com/entity/Text.hbm.xml</value>
+				<value>com/entity/Paragraph.hbm.xml</value></list>
+		</property>
+	</bean>
+	
+	<!-- 配置一个spring 的jdbcTemplate-->
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+</beans>

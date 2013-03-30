@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="gzszlwiki"
+  id="myeclipse.1345692871877"
+  context-root="/gzszlwiki"
+  j2ee-spec="5.0"
+  archive="gzszlwiki.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

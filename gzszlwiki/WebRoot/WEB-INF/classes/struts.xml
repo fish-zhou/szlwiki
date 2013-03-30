@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.action.excludePattern" value="/ueditor/.*,/login/imgUpload,/login/imgCrop" />
+	<!--修改上传文件大小,10M-->
+	<constant name="struts.multipart.maxSize" value="10485760"/>
+	
+	<package name="login" namespace="/login" extends="struts-default" >
+		<!--<action name="login" class="login" >
+		    <result name="success">/main.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>-->
+		
+		<!--发表贴子-->
+		<action name="edittext" class="edittext" >
+		    <result name="success" type="redirect">edittext01.action</result>
+		    <result name="login" type="redirect">edittext01.action</result>
+		</action>
+		<!--刷新主页面-->
+		<action name="edittext01" class="edittext"  method="viewAllText">
+		    <result name="success">/login/main.jsp</result>
+		    <result name="login">/login/addText.jsp</result>
+		</action>
+		<!--删除贴子-->
+		<action name="deleteText" class="edittext" method="deleteText">
+		    <result name="success" type="redirect" >edittext01.action </result>
+		</action>
+		<!--查看贴子详情-->
+		<action name="viewtext" class="viewtext" >
+		    <result name="success">/login/detail.jsp</result>
+		    <result name="login" type="redirect" >edittext01.action</result>
+		</action>
+		<!--查看段落详情-->
+		<action name="editpara" class="editpara" >
+		    <result name="success">/login/editPara.jsp</result>
+		    <result name="login" type="redirect" >edittext01.action</result>
+		</action>
+		<!--增加段落-->
+		<action name="addPara" class="editpara" method="addPara">
+		    <result name="success" type="redirect" >viewtext.action?textid=${textid}</result>
+		    <result name="login" type="redirect" >viewtext.action?textid=${textid}</result>
+		</action>
+		<!--修改段落-->
+		<action name="editpara01" class="editpara" method="updatePara">
+		    <result name="success" type="redirect">viewtext.action?textid=${textid}</result>
+		    <result name="login">/login/editPara.jsp</result>
+		</action>
+		<!--退出登录-->
+		<action name="exit" class="exit" >
+		    <result name="success" >/login.jsp</result>
+		</action>
+		<!--查看用户信息-->
+		<action name="userInf" class="userInf" method="getUserInf">
+		    <result name="success" >/login/user.jsp</result>
+		</action>
+		<!--修改用户密码-->
+		<action name="chpwd" class="userInf" method="changPsw">
+			<result name="success" type="redirect">userInf.action</result>
+		</action>
+		<!--修改用户密码-->
+		<action name="chpwd" class="userInf" method="changPsw">
+			<result name="success" type="redirect">userInf.action</result>
+		</action>
+		
+		<!--<action name="goUpload" class="uploadAction" method="goUpload">
+		    <result name="success">/upload.jsp</result>
+		</action>
+		<action name="uploadImage" class="uploadAction" method="doUpload">
+		    <result name="success">/</result>
+		    
+		</action>  -->
+	</package>
+	
+	<package name="notLogin" namespace="/" extends="struts-default" >
+		<!--登录-->
+		<action name="login" class="login" >
+		    <result name="success" type="redirect" >login/edittext01.action</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		
+		<!--注册-->
+		<action name="register" class="register" >
+		    <result name="success" type="redirect" >login/edittext01.action</result>
+		    <result name="login">/register.jsp</result>
+		</action>
+	</package>
+</struts>    

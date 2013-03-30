@@ -1,0 +1,73 @@
+
+a {
+	text-decoration: none;
+	font-size: 23px;
+}
+#regTop {
+	float:right;
+	margin-right:14em;
+	margin-top:8em;
+	background:WhiteSmoke;
+}
+
+#reg {
+	margin-left:auto; margin-right:auto; 
+	padding-top: 80px;
+	width:800px; 
+	
+}
+#regInput {
+	margin-left:10em;
+	background:WhiteSmoke;
+	width:500px;
+}
+
+#regLogo {
+	margin-left:4em;
+}
+
+.inputArea {
+	width:200px;
+	height:35px ;
+}
+
+.loginBTN {
+	padding-bottom: 2px;
+	padding-bottom: 0 9;
+	cursor: pointer;
+	border: 0;
+	vertical-align: middle;
+	width: 80px;
+	height: 35px;
+	background:#3A5FCD;
+	font-size: 19px;
+	color: white;
+}
+
+.cancleBTN {
+	padding-bottom: 2px;
+	padding-bottom: 0 9;
+	cursor: pointer;
+	border: 0;
+	vertical-align: middle;
+	width: 80px;
+	height: 35px;
+	background:#FF8C00;
+	font-size: 19px;
+}
+
+#css_table {
+      display:table;     
+  }
+.css_tr {
+      display: table-row;
+  }
+
+.css_td {
+      display: table-cell;
+      text-align: right;
+  }  
+  
+ #foot {
+	clear:both;
+}

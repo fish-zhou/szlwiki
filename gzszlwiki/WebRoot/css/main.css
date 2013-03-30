@@ -1,0 +1,125 @@
+@CHARSET "UTF-8";
+
+body {
+	
+	with:960px;
+	background: white;
+	color: #666;
+}
+div {
+	display: block;
+}
+#mid {
+	background: white;
+}
+a {
+	text-decoration: none;
+}
+
+#maincontent a {
+	font-size: 25px;
+	
+}
+
+#css_table {
+      display:table;
+  }
+.css_tr {
+      display: table-row;
+      width: 30px;
+  }
+.css_tr #row1, .css_tr #row2,.css_tr #row3{
+   text-align: center;
+   color:#2F4F4F;
+ }
+.css_td {
+      display: table-cell;
+      text-align: left;
+  }
+  
+
+#ptitle {
+	color:#6CAB00;
+}
+
+
+.buttonLoca{
+	float: right;
+}
+
+.button {
+	background: #FC9;
+	display: inline-block;
+	text-align: center;
+	padding: 9px 34px 11px;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+	position: relative;
+	cursor: pointer;
+	border: none;
+	border-radius:15px; 
+}
+
+.BTN {
+	padding-bottom: 2px;
+	padding-bottom: 0 9;
+	cursor: pointer;
+	border: 0;
+	vertical-align: middle;
+	width: 80px;
+	height: 35px;
+	background:#3A5FCD;
+	font-size: 19px;
+	color: white;
+}
+#deletebutton {
+	color: red;
+}
+.deletebutton a{
+	color: white;
+}
+.button a {
+	color: white;
+}
+
+
+.addText {
+	padding-left:8em;
+	padding-right:15em;
+}
+
+#detailcontent {
+	padding-top: 30px;
+}
+
+#detailJspUnit {
+
+    border: 5px solid #dedede;
+    -moz-border-radius: 15px;      /* Gecko browsers */
+    -webkit-border-radius: 15px;   /* Webkit browsers */
+    border-radius:15px;            /* W3C syntax */
+    text-indent:2em;
+}
+#detailJsp {
+	padding-left:8em;
+	padding-right:15em;
+}
+
+#detailJsp table, #detailJsp table td{
+	border: 1px solid#dedede;
+	border-collapse:collapse;
+}
+
+#editparaContent {
+	padding-left:8em;
+	padding-right:10em;
+}
+
+.addedUeditor {
+	margin-left:auto; margin-right:auto; 
+	padding-top: 200px;
+	width:800px;
+}

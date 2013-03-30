@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>szlwiki</display-name>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  
+   <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- sae需要的监听器 -->
+   <listener>
+    <listener-class>util.SaeListener</listener-class>
+  </listener>
+  
+   <!-- sae平台有分布式Session，每次请求都是到达不同的节点，每个节点上，Session ID不同，所以需要加上下面这个 --> 
+   <distributable />
+  <!--设置 session 的时间-->
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+  
+  <!-- 登录检查 -->
+    <filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>
+			util.LoginFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/login/*</url-pattern>
+	</filter-mapping> 
+	
+	<!-- ueditor 和上传过滤器-->
+    <filter>
+		<filter-name>UeditorFilter</filter-name>
+		<filter-class>
+			util.UeditorFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>UeditorFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 
+  
+  <!-- struts2 -->
+    <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>
+  		org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+  	</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>  
+  
+  <servlet>
+    <description>图片上传</description>
+    <display-name>图片上传</display-name>
+    <servlet-name>ImgUploadServlet</servlet-name>
+    <servlet-class>com.action.image.ImgUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImgUploadServlet</servlet-name>
+    <url-pattern>/login/imgUpload</url-pattern>
+  </servlet-mapping>
+ 	
+  <servlet>
+    <description>图片剪切</description>
+    <display-name>图片剪切</display-name>
+    <servlet-name>ImgCropServlet</servlet-name>
+    <servlet-class>com.action.image.ImgCrop</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImgCropServlet</servlet-name>
+    <url-pattern>/login/imgCrop</url-pattern>
+  </servlet-mapping>
+  
+   <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>register.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
